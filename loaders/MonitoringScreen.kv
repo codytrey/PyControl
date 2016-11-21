@@ -1,0 +1,30 @@
+<ActiveJobButton@Button>:
+    jobid: self.jobid
+    jobname: self.jobname
+    status: self.status
+    size_hint: .25, .25
+    BoxLayout:
+        orientation: "vertical"
+        size: self.parent.size      # match the button's size
+        pos: self.parent.pos        # match the button's position
+        padding: 5
+        spacing: 10
+
+        Label:
+            size_hint: None, 1
+            text: root.jobid
+        Label:
+            size_hint: None, 1
+            text: root.jobname
+        Label:
+            size_hint: None, 1
+            text: root.status
+
+<MonitoringScreen>:
+    GridLayout:
+        cols: 4
+        rows: 4
+        orientation: 'vertical'
+        Button:
+            text: 'Log Out'
+            on_press: app.logout()

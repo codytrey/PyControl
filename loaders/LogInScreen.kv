@@ -1,0 +1,37 @@
+<LogInScreen>:
+    username: user_name
+    password: password
+    host: api_host
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            Label:
+                text: 'User Name'
+            TextInput:
+                multiline: False
+                id: user_name
+                bind: 'text=on_text'
+                write_tab: False
+        BoxLayout:
+            Label:
+                text: 'Password'
+            TextInput:
+                multiline: False
+                password: True
+                id: password
+                bind: 'text=on_text'
+                write_tab: False
+        BoxLayout:
+            Label:
+                text: 'Host'
+            TextInput:
+                multiline: False
+                id: api_host
+                bind: 'text=on_text'
+                write_tab: False
+        Button:
+            text: 'Log In'
+            on_press: app.login()
+        Button:
+            text: 'Quit'
+            on_press: quit(0)
