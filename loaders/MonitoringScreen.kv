@@ -2,7 +2,11 @@
     jobid: self.jobid
     jobname: self.jobname
     status: self.status
-    size_hint: .25, .25
+    size_hint_x: .25
+    size_hint_y: None
+    height: 225
+    padding_x: 5
+    padding_y: 5
     BoxLayout:
         orientation: "vertical"
         size: self.parent.size      # match the button's size
@@ -13,18 +17,38 @@
         Label:
             size_hint: None, 1
             text: root.jobid
+            halign: 'center'
+            pos_hint: {'center_x': .5}
         Label:
             size_hint: None, 1
             text: root.jobname
+            halign: 'center'
+            pos_hint: {'center_x': .5}
         Label:
             size_hint: None, 1
             text: root.status
+            halign: 'center'
+            pos_hint: {'center_x': .5}
 
 <MonitoringScreen>:
+    grid: grid
     GridLayout:
-        cols: 4
-        rows: 4
-        orientation: 'vertical'
+        size_hint_x: 1
+        size_hint_y: .15
+        pos_hint: {'top': 1}
+        id: menu
+        rows: 1
         Button:
             text: 'Log Out'
             on_press: app.logout()
+        Button:
+            text: 'Refresh'
+            on_press: app.refresh_monitoring()
+    GridLayout:
+        id: grid
+        size_hint_x: 1
+        size_hint_y: .85
+        cols: 4
+        padding: 5
+        row_force_default: True
+        row_default_height: 40

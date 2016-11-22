@@ -44,7 +44,7 @@ class LogInScreen(Screen):
 
 class MonitoringScreen(Screen):
     token = ObjectProperty()
-    # grid = GridLayout(cols=2)
+    grid = GridLayout()
     pass
 
 
@@ -97,9 +97,10 @@ class MyApp(App):
         login_args = collections.namedtuple('login_args', ['username', 'token', 'host'])
         args = login_args(self.username, self.tok, self.host)
         json = api.list_jobs(args)
+        self.monitoringscreen.grid.clear_widgets()
         for job in json:
             print(job['jobId'])
-            self.monitoringscreen.add_widget(ActiveJobButton(jobid=job['jobId'], jobname=job['name'],status=job['status'],name=job['jobId']))
+            self.monitoringscreen.grid.add_widget(ActiveJobButton(jobid=job['jobId'], jobname=job['name'],status=job['status'],name=job['jobId']))
 
 
 
